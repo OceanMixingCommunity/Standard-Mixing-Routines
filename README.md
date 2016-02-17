@@ -8,6 +8,7 @@ We are just starting this repo and getting input from the community about how it
 #Possible topics
 * Thorpe Scales / overturns
 * Finescale Parameterizations (shear/strain)
+* Calculation of stratification
 * Theoretical spectra (Batchelor/Kraichnan)
 * Small sample datasets that can be used to test code and compare results vs other versions.
 * Summaries of sensitivity studies, method comparisons etc.
