@@ -12,3 +12,7 @@ We are just starting this repo and getting input from the community about how it
 * Theoretical spectra (Batchelor/Kraichnan)
 * Small sample datasets that can be used to test code and compare results vs other versions.
 * Summaries of sensitivity studies, method comparisons etc.
+
+## Links
+* Climate Process Team: <http://www-pord.ucsd.edu/~jen/cpt/>
+* OSU Ocean Mixing Group: <http://mixing.coas.oregonstate.edu/>
