@@ -5,18 +5,22 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 %
 % Compute overturns (Thorpe scales) and epsilon for a given density profile .
 %
+%---------
 % INPUTS:
+%---------
 % p     : pressure    [db] , M X 1
 % t     : temperature [C]  , M X 1
 % s     : salinity    [PSU], M X 1
 % Params: Structure with parameters:
-%   lat       : latitude [deg], scalar or vector
+%   lat       : latitude [deg], scalar or vector (defaul=30)
 %   usetemp   : 1 to use temperature, 0 to use density (default)
-%   minotsize : Min OT size (too small and may be noise)
-%   sigma     : Noise level for density.
-%   runlmin   : Runlength minimum
+%   minotsize : Min OT size (too small and may be noise) (default=2)
+%   sigma     : Noise level for density. (default=5e-4)
+%   runlmin   : Runlength minimum (default=0)
 %
+%---------
 % OUTPUTS:
+%---------
 % Epsout      :  Epsilon [Wkg^-1], M X 1
 % Lttot       :  Thorpe scale [m] , M X 1
 % Lmin        :  Min OT [m] resolvable from noise in density and N2 , M X 1
@@ -40,6 +44,7 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 %   Otnsq_each
 %   eps_each
 %
+%---------
 % TO DO:
 % Different ref densities? 
 %
@@ -51,6 +56,7 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 % sw_bfrq.m
 % clip.m
 %
+%-----------------
 % A. Pickering - andypicke@gmail.com
 %
 % ~ NOTES - AP ~
