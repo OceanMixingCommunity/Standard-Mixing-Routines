@@ -1,5 +1,5 @@
 # Standard-Mixing-Routines
-Repository for standard software used by oceanographic mixing community
+Repository for standard software used by oceanographic mixing community.
 
 This repository is inteded to be a repo for "best-practices" software used to perform standard calculations in the Oceanographic mixing community (such as Thorpe scales, finescale parameterizations etc).
 
@@ -21,4 +21,5 @@ We are just starting this repo and getting input from the community about how it
 ## Links
 * Climate Process Team: <http://www-pord.ucsd.edu/~jen/cpt/>
 * OSU Ocean Mixing Group: <http://mixing.coas.oregonstate.edu/>
-* Guide to GitHub workflow <https://guides.github.com/introduction/flow/>
+* Guide to GitHub workflow: <https://guides.github.com/introduction/flow/>
+* CVmix: <http://cvmix.github.io/>
