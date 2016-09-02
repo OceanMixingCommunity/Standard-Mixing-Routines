@@ -9,6 +9,9 @@ We are just starting this repo and getting input from the community about how it
 ## How to Contribute
 * You can upload code to <https://www.dropbox.com/request/s0pWpFVFkdijwEQQMl0K>
 * Eventually we envision that everyone in the community will contribute and help maintain the repository. But at first we think it will be easier for a small group to upload and organize things.
+* Find a bug or problem with codes? Open an 'issue' to notify team members and create an official record.
+* Want to make changes? First, 'fork' the repository (make your own separate copy), then make changes, then open a 'pull request'. Once approved, it can be merged into the master branch.
+* Don't use git often and don't want to remember all the terminal commands? Download GitHub for desktop <https://desktop.github.com/>, a nice and easy to use front-end.
 
 ## Possible topics
 * Thorpe Scales / overturns
