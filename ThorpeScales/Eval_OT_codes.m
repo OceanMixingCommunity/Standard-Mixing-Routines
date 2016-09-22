@@ -48,24 +48,38 @@ icast=1
 p=ctd.p(:,icast);
 t=ctd.t(:,icast);
 s=ctd.s(:,icast);
-[Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overturns_discrete_AP(p,t,s,Params)
+OT=compute_overturns_discrete_AP(p,t,s,Params)
 
 %%
 
 figure(1);clf
 
-subplot(121)
+ax1=subplot(131);
 semilogx(t,p,'linewidth',2)
 axis ij
 grid on
 ylabel('p [db]')
 xlabel('t [^oC]')
+title('Temperature')
 
-subplot(122)
-semilogx(OT.eps,OT.p,'d-')
-xlim([1e-11 nanmax(OT.eps)])
+ax2=subplot(132);
+plot(OT.Lot,OT.p,'d-')
 axis ij
 grid on
-ylabel('p [db]')
+xlabel('Lot')
+title('Thorpe displacement')
+set(gca,'YTickLabel',[])
+
+ax3=subplot(133);
+semilogx(OT.eps,OT.p,'d')
+axis ij
+grid on
 xlabel('log_{10}[\epsilon]')
+title('Dissipation rate')
+set(gca,'YTickLabel',[])
+set(gca,'XTick',[1e-10 1e-9 1e-8 1e-7 1e-6 1e-5])
+xlim([1e-11 nanmax(OT.eps)])
+
+linkaxes([ax1 ax2 ax3],'y')
+
 %%
