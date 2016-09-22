@@ -1,6 +1,5 @@
 function OT=compute_overturns_discrete_AP(p,t,s,Params)
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-%
 % function OT=compute_overturns_discrete_AP(p,t,s,Params)
 %
 % Compute overturns (Thorpe scales) and epsilon for a given density/temperature profile .
@@ -11,19 +10,20 @@ function OT=compute_overturns_discrete_AP(p,t,s,Params)
 % p     : pressure    [db] , M X 1
 % t     : temperature [C]  , M X 1
 % s     : salinity    [PSU], M X 1
-% Params: Structure with parameters:
+% Params: Structure with (optional) parameters:
 %   lat       : latitude [deg], scalar or vector (defaul=30)
 %   usetemp   : 1 to use temperature, 0 to use density (default)
 %   minotsize : Min OT size (too small and may be noise) (default=2)
 %   sigma     : Noise level for density. (default=5e-4)
 %   runlmin   : Runlength minimum (default=0)
+%   plotit    : Make a summary plot (default=0)
 %
 %---------
 % OUTPUTS:
 %---------
 % OT : Structure with fields:
 %
-% Epsout      :  Epsilon [Wkg^-1], M X 1
+% eps         :  Epsilon [Wkg^-1], M X 1
 % Lttot       :  Thorpe scale [m] , M X 1
 % Lmin        :  Min OT [m] resolvable from noise in density and N2 , M X 1
 % runlmax     :  max run length
@@ -49,7 +49,6 @@ function OT=compute_overturns_discrete_AP(p,t,s,Params)
 %---------
 % TO DO:
 % Different ref densities?
-%
 %
 %
 % Dependencies:
@@ -93,18 +92,16 @@ if ~isfield(Params,'plotit')
     Params.plotit=0;
 end
 
-lat=Params.lat;
-minotsize=Params.minotsize;
-runlmin=Params.runlmin;
-sigma=Params.sigma;
-usetemp=Params.usetemp;
+lat      = Params.lat;
+minotsize= Params.minotsize;
+runlmin  = Params.runlmin;
+sigma    = Params.sigma;
+usetemp  = Params.usetemp;
 
 % make sure inputs are columnn vectors
-
 t=t(:);
 s=s(:);
 p=p(:);
-
 
 %% make potential density and temp at reference depths
 % Use one depth if total depth range <1200 m (e.g. fast ctd), but use
@@ -188,10 +185,10 @@ for iref=1:length(refd)
         % overturns.
         
         clear Lot_each Lt_each Otnsq_each eps_each
-        Lot_each = [] ;
-        Lt_each  = [] ;
+        Lot_each   = [] ;
+        Lt_each    = [] ;
         Otnsq_each = [] ;
-        eps_each = [] ;
+        eps_each   = [] ;
         
         clear start_pass stops_pass
         start_pass=[];
@@ -286,19 +283,19 @@ for iref=1:length(refd)
                 Lt(ind)=sqrt(mean(dz(ind).^2));
                 R0tot(ind)=R0;
                 
-                Lot_each=[Lot_each (max(pg(ind))-min(pg(ind))) ];
-                Lt_each=[Lt_each sqrt(mean(dz(ind).^2))];
-                Otnsq_each =[Otnsq_each 9.8./mean(pden(ind)).*drhodz ];
-                eps_each=[eps_each 0.64*Lt_each(end).^2.*sqrt(Otnsq_each(end)).^3];
+                Lot_each   = [Lot_each (max(pg(ind))-min(pg(ind))) ];
+                Lt_each    = [Lt_each sqrt(mean(dz(ind).^2))];
+                Otnsq_each = [Otnsq_each 9.8./mean(pden(ind)).*drhodz ];
+                eps_each   = [eps_each 0.64*Lt_each(end).^2.*sqrt(Otnsq_each(end)).^3];
                 
                 start_pass=[start_pass start(j)];
                 
             else % overturn did not pass test
-                Otnsq(ind)=NaN;
-                Lmin0(ind)=NaN;
-                Lot0(ind)=NaN;
-                Lt(ind)=NaN;
-                R0tot(ind)=NaN;
+                Otnsq(ind) = NaN;
+                Lmin0(ind) = NaN;
+                Lot0(ind)  = NaN;
+                Lt(ind)    = NaN;
+                R0tot(ind) = NaN;
                 
             end % if pass tests
             
@@ -311,11 +308,7 @@ for iref=1:length(refd)
         clear xxx iun
         [xxx,iun]=unique(pg);
         Lt=Lt(:);
-        
-        iz;
-        pg;
-        %if numel(iun)>1
-        
+                
         % Thorpe scale (rms displacement)
         Lttot(iz)=interp1(pg(iun),Lt(iun),p0(iz));
         
