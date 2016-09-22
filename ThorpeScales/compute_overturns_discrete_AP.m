@@ -1,7 +1,7 @@
-function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overturns_discrete_AP(p,t,s,Params)
+function OT=compute_overturns_discrete_AP(p,t,s,Params)
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %
-% function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overturns_discrete_AP(p,t,s,Params)
+% function OT=compute_overturns_discrete_AP(p,t,s,Params)
 %
 % Compute overturns (Thorpe scales) and epsilon for a given density/temperature profile .
 %
@@ -21,6 +21,8 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 %---------
 % OUTPUTS:
 %---------
+% OT : Structure with fields:
+%
 % Epsout      :  Epsilon [Wkg^-1], M X 1
 % Lttot       :  Thorpe scale [m] , M X 1
 % Lmin        :  Min OT [m] resolvable from noise in density and N2 , M X 1
@@ -29,7 +31,7 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 % ptmp        :  Pot. temperature (not actually returned yet?)
 % Otnsq_out   :  Mean N2 in overturn region (used to calc. eps),M X 1
 % d           :  Displacements when profile is re-ordered (m), M X 1
-% OT : Structure with fields:
+%
 %   refd   : Reference density(s) used to compute potential density
 %   Num_OT : # of overturns that passed all criteria/tests
 %   'each' fields return only one value for each overturn (for example if an
@@ -165,7 +167,7 @@ for iref=1:length(refd)
         
         % sort profile
         [Vsort,ind]=sort(sig*V);
-        %    tsort=sig*V; % AP 13 Feb
+        % tsort=sig*V; % AP 13 Feb
         psort = pg(ind);
         dz = pg-psort;
         
@@ -186,10 +188,10 @@ for iref=1:length(refd)
         % overturns.
         
         clear Lot_each Lt_each Otnsq_each eps_each
-        Lot_each=[];%nan*ones(Num_OT,1);
-        Lt_each=[];%nan*ones(Num_OT,1);
-        Otnsq_each=[];%nan*ones(Num_OT,1);
-        eps_each=[];%nan*ones(Num_OT,1);
+        Lot_each = [] ;
+        Lt_each  = [] ;
+        Otnsq_each = [] ;
+        eps_each = [] ;
         
         clear start_pass stops_pass
         start_pass=[];
@@ -369,6 +371,13 @@ OT.MakeInfo=['Made ' datestr(now) ' w/ ' mfilename ', in ' version];
 
 OT.eps=Epsout;
 OT.p=p0;
+OT.Lmin=Lmin;
+OT.Lot=Lot;
+OT.runlmax=runlmax;
+OT.Lttot=Lttot;
+OT.p_tmp=p_tmp;
+OT.n2out=n2out;
+OT.Otnsq_out=Otnsq_out;
 
 OT.d=d;
 OT.Num_OT=numel(start_pass);
