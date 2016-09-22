@@ -367,6 +367,9 @@ OT.refd=refd;
 OT.Params=Params;
 OT.MakeInfo=['Made ' datestr(now) ' w/ ' mfilename ', in ' version];
 
+OT.eps=Epsout;
+OT.p=p0;
+
 OT.d=d;
 OT.Num_OT=numel(start_pass);
 OT.Lot_each=Lot_each;
