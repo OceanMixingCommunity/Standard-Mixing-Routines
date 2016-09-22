@@ -3,7 +3,7 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 %
 % function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overturns_discrete_AP(p,t,s,Params)
 %
-% Compute overturns (Thorpe scales) and epsilon for a given density profile .
+% Compute overturns (Thorpe scales) and epsilon for a given density/temperature profile .
 %
 %---------
 % INPUTS:
@@ -46,7 +46,7 @@ function [Epsout,Lmin,Lot,runlmax,Lttot,p_tmp,n2out,Otnsq_out,OT]=compute_overtu
 %
 %---------
 % TO DO:
-% Different ref densities? 
+% Different ref densities?
 %
 %
 %
@@ -87,6 +87,10 @@ if ~isfield(Params,'usetemp')
     Params.usetemp=0;
 end
 
+if ~isfield(Params,'plotit')
+    Params.plotit=0;
+end
+
 lat=Params.lat;
 minotsize=Params.minotsize;
 runlmin=Params.runlmin;
@@ -108,8 +112,8 @@ p=p(:);
 %     dref=1000;
 %     refd=(min(p)+dref/2):dref:max(p);
 % else
-    refd=(min(p)+max(p))/2;
-    dref=(max(p)-min(p))+1;
+refd=(min(p)+max(p))/2;
+dref=(max(p)-min(p))+1;
 %end
 
 %%
@@ -180,7 +184,7 @@ for iref=1:length(refd)
         % these values are repeated for each depth value in overturn range, so
         % for example histograms of Lt would be weighted towards larger
         % overturns.
-
+        
         clear Lot_each Lt_each Otnsq_each eps_each
         Lot_each=[];%nan*ones(Num_OT,1);
         Lt_each=[];%nan*ones(Num_OT,1);
@@ -197,6 +201,7 @@ for iref=1:length(refd)
             subplot(141)
             plot(n2,p_ave)
             xlim([0 nanmax(n2)])
+            xlabel('N^2')
             axis ij
             grid on
             
@@ -211,11 +216,12 @@ for iref=1:length(refd)
             
             subplot(143)
             plot(dz,pg,'o-')
+            xlabel('dz')
             axis ij
             grid on
             ytloff
         end
-        %~        
+        %~
         
         % make empty arrays to store results for each overturn region
         Otnsq = NaN*dz;
@@ -345,6 +351,7 @@ n2out=interp1(p_ave,n2,p0); % NOTE this maybe not n2 used to compute epsilon in 
 if Params.plotit==1
     subplot(144)
     plot(Lot,p0,'o-')
+    xlabel('Lot')
     hold on
     plot(Lmin,p0)
     axis ij
