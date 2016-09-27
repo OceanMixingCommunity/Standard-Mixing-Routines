@@ -26,3 +26,4 @@ We are just starting this repo and getting input from the community about how it
 * OSU Ocean Mixing Group: <http://mixing.coas.oregonstate.edu/>
 * Guide to GitHub workflow: <https://guides.github.com/introduction/flow/>
 * CVmix: <http://cvmix.github.io/>
+* Amy's Mixing Database <???>
