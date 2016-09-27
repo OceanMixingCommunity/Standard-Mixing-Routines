@@ -14,6 +14,7 @@ clear ; close all
 path_to_repo = '/Users/Andy/Standard-Mixing-Routines/'
 
 addpath(fullfile(path_to_repo,'ThorpeScales'))
+addpath(fullfile(path_to_repo,'seawater_ver3_2'))
 
 % load CTD data file
 % 'ctd' structure contains downcast CTD profiles from a ~24-hr station on R/V
@@ -44,13 +45,13 @@ linkaxes([ax1 ax2])
 % run for 1 cast
 Params.lat=nanmean(ctd.lat);
 Params.plotit=1
-icast=1
-p=ctd.p(:,icast);
+icast=8
+p=ctd.p;
 t=ctd.t(:,icast);
 s=ctd.s(:,icast);
 OT=compute_overturns_discrete_AP(p,t,s,Params)
 
-%%
+%% Plot results for 1 profile
 
 figure(1);clf
 
