@@ -1,0 +1,271 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title>The Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10</title>
+ <meta name="generator" content="MATLAB 7.10">
+ <meta name="date" content="2010-09-30">
+ <meta name="m-file" content="gsw_contents">
+ <style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+ </style></head><body>
+ <div class="content">
+ <h1><font size="6" color="#000099"><b>The Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10</b></font></h1>
+ <!--introduction--><!--/introduction-->
+ <h2><font size="5" color="#000099"><b>Contents</b></font></h2>
+ <div><ul>
+ <li><a href="#1">Absolute Salinity (SA) and Preformed Salinity (Sstar)</a></li>
+ <li><a href="#2">Conservative Temperature (CT)</a></li>
+ <li><a href="#3">other conversions between temperatures, salinities, pressure and height</a></li>
+ <li><a href="#4">density and enthalpy, based on the 25-term expression for density</a></li>
+ <li><a href="#5">water column properties, based on the 25-term expression for density</a></li>
+ <li><a href="#6">geostrophic streamfunctions, based on the 25-term expression for density</a></li>
+ <li><a href="#7">neutral and non-linear properties, based on the 25-term expression for density</a></li>
+ <li><a href="#8">basic thermodynamic properties in terms of (SA, t, p)</a></li>
+ <li><a href="#9">basic thermodynamic properties in terms of CT and pt</a></li>
+ <li><a href="#10">derivatives of enthalpy, entropy, CT and pt</a></li>
+ <li><a href="#11">Planet Earth properties</a></li>
+ <li><a href="#12">functions for laboratory use</a></li>
+ <li><a href="#13">Front page, contents and check values of the GSW Oceanographic Toolbox</a></li>
+ <li><a href="#14">Practical Salinity (SP), PSS-78</a></li>
+ <li><a href="#15">Library functions of the GSW toolbox (internal functions; not intended to be called by users)</a></li>
+ <li><a href="#16">Licences and third party software</a></li>
+ </ul></div>
+ <pre> </pre>
+ <a name="1"></a>
+ <h3><font size="5" color="#000099"><b>Absolute Salinity (SA) and Preformed Salinity (Sstar)</b></font></h3>
+<pre><font size="3"> <a href="gsw_SA_from_SP.html">gsw_SA_from_SP</a>                      <font face="Georgia" size="3">Absolute Salinity from Practical Salinity</font>
+ <a href="gsw_Sstar_from_SP.html">gsw_Sstar_from_SP</a>                   <font face="Georgia" size="3">Preformed Salinity from Practical Salinity</font>
+ <a href="gsw_SA_Sstar_from_SP.html">gsw_SA_Sstar_from_SP</a>                <font face="Georgia" size="3">Absolute Salinity &amp; Preformed Salinity from Practical Salinity</font></font>
+</pre>
+<a name="2"></a>
+<h3><font size="5" color="#000099"><b>Conservative Temperature (CT)</b></font></h3>
+<pre><font size="3"> <a href="gsw_CT_from_t.html">gsw_CT_from_t</a>                       <font face="Georgia" size="3">Conservative Temperature from in-situ temperature</font></font>
+</pre>
+<a name="3"></a>
+<h3><font size="5" color="#000099"><b>other conversions between temperatures, salinities, pressure and height</b></font></h3>
+<pre><font size="3"> <a href="gsw_t_from_CT.html">gsw_t_from_CT</a>                       <font face="Georgia" size="3">in-situ temperature from Conservative Temperature</font>
+ <a href="gsw_pt_from_t.html">gsw_pt_from_t</a>                       <font face="Georgia" size="3">potential temperature</font>
+ <a href="gsw_CT_from_pt.html">gsw_CT_from_pt</a>                      <font face="Georgia" size="3">Conservative Temperature from potential temperature</font>
+ <a href="gsw_pot_enthalpy_from_pt.html">gsw_pot_enthalpy_from_pt</a>            <font face="Georgia" size="3">potential enthalpy from potential temperature</font>
+ <a href="gsw_pt0_from_t.html">gsw_pt0_from_t</a>                      <font face="Georgia" size="3">potential temperature with a reference pressure of zero dbar</font>
+ <a href="gsw_pt_from_CT.html">gsw_pt_from_CT</a>                      <font face="Georgia" size="3">potential temperature from Conservative Temperature</font>
+ <a href="gsw_SP_from_SA.html">gsw_SP_from_SA</a>                      <font face="Georgia" size="3">Practical Salinity from Absolute Salinity</font>
+ <a href="gsw_Sstar_from_SA.html">gsw_Sstar_from_SA</a>                   <font face="Georgia" size="3">Preformed Salinity from Absolute Salinity</font>
+ <a href="gsw_SA_from_Sstar.html">gsw_SA_from_Sstar</a>                   <font face="Georgia" size="3">Absolute Salinity from Preformed Salinity</font>
+ <a href="gsw_SP_from_Sstar.html">gsw_SP_from_Sstar</a>                   <font face="Georgia" size="3">Practical Salinity from Preformed Salinity</font>
+ <a href="gsw_z_from_p.html">gsw_z_from_p</a>                        <font face="Georgia" size="3">height from pressure</font>
+ <a href="gsw_p_from_z.html">gsw_p_from_z</a>                        <font face="Georgia" size="3">pressure from height</font>
+ <a href="gsw_t90_from_t48.html">gsw_t90_from_t48</a>                    <font face="Georgia" size="3">ITS-90 temperature from IPTS-48 temperature</font>
+ <a href="gsw_t90_from_t68.html">gsw_t90_from_t68</a>                    <font face="Georgia" size="3">ITS-90 temperature from IPTS-68 temperature</font></font>
+</pre>
+<a name="4"></a>
+<h3><font size="5" color="#000099"><b>density and enthalpy, based on the 25-term expression for density</b></font></h3>
+<pre><font size="3"> <a href="gsw_rho_CT25.html">gsw_rho_CT25</a>                        <font face="Georgia" size="3">in-situ density</font>
+ <a href="gsw_rho_alpha_beta_CT25.html">gsw_rho_alpha_beta_CT25</a>             <font face="Georgia" size="3">in-situ density, thermal expansion &amp; </font>
+                                      <font face="Georgia" size="3">saline contraction coefficient</font>
+ <a href="gsw_specvol_CT25.html">gsw_specvol_CT25</a>                    <font face="Georgia" size="3">specific volume</font>
+ <a href="gsw_specvol_anom_CT25.html">gsw_specvol_anom_CT25</a>               <font face="Georgia" size="3">specific volume anomaly</font>
+ <a href="gsw_enthalpy_CT25.html">gsw_enthalpy_CT25</a>                   <font face="Georgia" size="3">enthalpy</font>
+ <a href="gsw_enthalpy_diff_CT25.html">gsw_enthalpy_diff_CT25</a>              <font face="Georgia" size="3">difference of enthalpy between two pressures</font></font>
+</pre>
+<a name="5"></a>
+<h3><font size="5" color="#000099"><b>water column properties, based on the 25-term expression for density</b></font></h3>
+<pre><font size="3"> <a href="gsw_Nsquared_CT25.html">gsw_Nsquared_CT25</a>                   <font face="Georgia" size="3">buoyancy (Brunt-Vaisala) frequency squared (N^2)</font>
+ <a href="gsw_Turner_Rsubrho_CT25.html">gsw_Turner_Rsubrho_CT25</a>             <font face="Georgia" size="3">Turner angle &amp; Rsubrho</font>
+ <a href="gsw_IPV_vs_fNsquared_ratio_CT25.html">gsw_IPV_vs_fNsquared_ratio_CT25</a>     <font face="Georgia" size="3">ratio of the vertical gradient of potential density</font>
+                                      <font face="Georgia" size="3">(with reference pressure, pr), to the vertical gradient</font>
+                                      <font face="Georgia" size="3">of locally-referenced potential density</font></font>
+</pre>
+<a name="6"></a>
+<h3><font size="5" color="#000099"><b>geostrophic streamfunctions, based on the 25-term expression for density</b></font></h3>
+<pre><font size="3"> <a href="gsw_geo_strf_dyn_height.html">gsw_geo_strf_dyn_height</a>             <font face="Georgia" size="3">dynamic height anomaly</font>
+ <a href="gsw_geo_strf_dyn_height_pc.html">gsw_geo_strf_dyn_height_pc</a>          <font face="Georgia" size="3">dynamic height anomaly for piecewise constant profiles</font>
+ <a href="gsw_geo_strf_McD_Klocker.html">gsw_geo_strf_McD_Klocker</a>            <font face="Georgia" size="3">McDougall-Klocker geostrophic streamfunction</font>
+ <a href="gsw_geo_strf_McD_Klocker_pc.html">gsw_geof_str_McD_Klocker_pc</a>         <font face="Georgia" size="3">McDougall-Klocker geostrophic streamfunction for</font>
+                                      <font face="Georgia" size="3">piecewise constant profiles</font>
+ <a href="gsw_geo_strf_Montgomery.html">gsw_geo_strf_Montgomery</a>             <font face="Georgia" size="3">Montgomery geostrophic streamfunction</font>
+ <a href="gsw_geo_strf_Cunningham.html">gsw_geo_strf_Cunningham</a>             <font face="Georgia" size="3">Cunningham geostrophic streamfunction</font>
+ <a href="gsw_geostrophic_velocity.html">gsw_geostrophic_velocity</a>            <font face="Georgia" size="3">geostrophic velocity</font></font>
+</pre>
+<a name="7"></a>
+<h3><font size="5" color="#000099"><b>neutral and non-linear properties, based on the 25-term expression for density</b></font></h3>
+<pre><font size="3"> <a href="gsw_cabbeling_CT25.html">gsw_cabbeling_CT25</a>                  <font face="Georgia" size="3">cabbeling coefficient</font>
+ <a href="gsw_thermobaric_CT25.html">gsw_thermobaric_CT25</a>                <font face="Georgia" size="3">thermobaric coefficient</font>
+ <a href="gsw_isopycnal_slope_ratio_CT25.html">gsw_isopycnal_slope_ratio_CT25</a>      <font face="Georgia" size="3">ratio of the slopes of isopycnals on the SA-CT diagram </font>
+                                      <font face="Georgia" size="3">for p &amp; pr</font>
+ <a href="gsw_isopycnal_vs_ntp_CT_ratio_CT25.html">gsw_isopycnal_vs_ntp_CT_ratio_CT25</a>  <font face="Georgia" size="3">ratio of the gradient of Conservative Temperature</font>
+                                      <font face="Georgia" size="3">in a potential density surface to that in the neutral </font>
+                                      <font face="Georgia" size="3">tangent plane</font>
+ <a href="gsw_ntp_pt_vs_CT_ratio_CT25.html">gsw_ntp_pt_vs_CT_ratio_CT25</a>         <font face="Georgia" size="3">ratio of gradients of potential temperature &amp;</font>
+                                      <font face="Georgia" size="3">Conservative Temperature in a neutral tangent plane</font>
+                                      <font face="Georgia" size="3">(i.e. in a locally-referenced potential density surface)</font></font>
+</pre>
+<a name="8"></a>
+<h3><font size="5" color="#000099"><b>basic thermodynamic properties in terms of (SA, t, p)</b></font></h3>
+<pre><font size="3"> <a href="gsw_rho.html">gsw_rho</a>                             <font face="Georgia" size="3">in-situ density</font>
+ <a href="gsw_pot_rho.html">gsw_pot_rho</a>                         <font face="Georgia" size="3">potential density</font>
+ <a href="gsw_specvol.html">gsw_specvol</a>                         <font face="Georgia" size="3">specific volume</font>
+ <a href="gsw_specvol_anom.html">gsw_specvol_anom</a>                    <font face="Georgia" size="3">specific volume anomaly</font>
+ <a href="gsw_alpha_wrt_CT.html">gsw_alpha_wrt_CT</a>                    <font face="Georgia" size="3">thermal expansion coefficient with respect to Conservative Temperature.</font>
+ <a href="gsw_alpha_wrt_pt.html">gsw_alpha_wrt_pt</a>                    <font face="Georgia" size="3">thermal expansion coefficient with respect to potential temperature</font>
+ <a href="gsw_alpha_wrt_t.html">gsw_alpha_wrt_t</a>                     <font face="Georgia" size="3">thermal expansion coefficient with respect to in-situ temperature</font>
+ <a href="gsw_beta_const_CT.html">gsw_beta_const_CT</a>                   <font face="Georgia" size="3">saline contraction coefficient at constant Conservative Temperature.</font>
+ <a href="gsw_beta_const_pt.html">gsw_beta_const_pt</a>                   <font face="Georgia" size="3">saline contraction coefficient at constant potential temperature</font>
+ <a href="gsw_beta_const_t.html">gsw_beta_const_t</a>                    <font face="Georgia" size="3">saline contraction coefficient at constant in-situ temperature</font>
+ <a href="gsw_entropy.html">gsw_entropy</a>                         <font face="Georgia" size="3">entropy</font>
+ <a href="gsw_internal_energy.html">gsw_internal_energy</a>                 <font face="Georgia" size="3">internal energy</font>
+ <a href="gsw_enthalpy.html">gsw_enthalpy</a>                        <font face="Georgia" size="3">enthalpy</font>
+ <a href="gsw_cp.html">gsw_cp</a>                              <font face="Georgia" size="3">isobaric heat capacity</font>
+ <a href="gsw_isochoric_heat_cap.html">gsw_isochoric_heat_cap</a>              <font face="Georgia" size="3">isochoric heat capacity</font>
+ <a href="gsw_chem_potential_relative.html">gsw_chem_potential_relative</a>         <font face="Georgia" size="3">relative chemical potential</font>
+ <a href="gsw_chem_potential_water.html">gsw_chem_potential_water</a>            <font face="Georgia" size="3">chemical potential of water in seawater</font>
+ <a href="gsw_chem_potential_salt.html">gsw_chem_potential_salt</a>             <font face="Georgia" size="3">chemical potential of salt in seawater</font>
+ <a href="gsw_Helmholtz_energy.html">gsw_Helmholtz_energy</a>                <font face="Georgia" size="3">Helmholtz energy</font>
+ <a href="gsw_sound_speed.html">gsw_sound_speed</a>                     <font face="Georgia" size="3">sound speed</font>
+ <a href="gsw_kappa.html">gsw_kappa</a>                           <font face="Georgia" size="3">isentropic compressibility</font>
+ <a href="gsw_kappa_const_t.html">gsw_kappa_const_t</a>                   <font face="Georgia" size="3">isothermal compressibility</font>
+ <a href="gsw_adiabatic_lapse_rate.html">gsw_adiabatic_lapse_rate</a>            <font face="Georgia" size="3">adiabatic lapse rate</font>
+ <a href="gsw_molality.html">gsw_molality</a>                        <font face="Georgia" size="3">molality of seawater</font>
+ <a href="gsw_ionic_strength.html">gsw_ionic_strength</a>                  <font face="Georgia" size="3">ionic strength of seawater</font>
+ <a href="gsw_osmotic_coefficient.html">gsw_osmotic_coefficient</a>             <font face="Georgia" size="3">osmotic coefficient of seawater</font>
+ <a href="gsw_temps_maxdensity.html">gsw_temps_maxdensity</a>                <font face="Georgia" size="3">temperatures of maximum density of seawater</font></font>
+ </pre>
+ <a name="9"></a>
+<h3><font size="5" color="#000099"><b>basic thermodynamic properties in terms of CT and pt</b></font></h3>
+<pre><font size="3"> <a href="gsw_rho_CT.html">gsw_rho_CT</a>                          <font face="Georgia" size="3">in-situ density from CT</font>
+ <a href="gsw_rho_alpha_beta_CT.html">gsw_rho_alpha_beta_CT</a>               <font face="Georgia" size="3">in-situ density, thermal expansion &amp; saline contraction coefficient from CT</font>
+ <a href="gsw_specvol_CT.html">gsw_specvol_CT</a>                      <font face="Georgia" size="3">specific volume from CT</font>
+ <a href="gsw_specvol_anom_CT.html">gsw_specvol_anom_CT</a>                 <font face="Georgia" size="3">specific volume anomaly from CT</font>
+ <a href="gsw_sigma0_CT.html">gsw_sigma0_CT</a>                       <font face="Georgia" size="3">sigma0 in terms of SA &amp; CT with reference pressure of 0 dbar</font>
+ <a href="gsw_sigma1_CT.html">gsw_sigma1_CT</a>                       <font face="Georgia" size="3">sigma1 in terms of SA &amp; CT with reference pressure of 1000 dbar</font>
+ <a href="gsw_sigma2_CT.html">gsw_sigma2_CT</a>                       <font face="Georgia" size="3">sigma2 in terms of SA &amp; CT with reference pressure of 2000 dbar</font>
+ <a href="gsw_sigma3_CT.html">gsw_sigma3_CT</a>                       <font face="Georgia" size="3">sigma3 in terms of SA &amp; CT with reference pressure of 3000 dbar</font>
+ <a href="gsw_sigma4_CT.html">gsw_sigma4_CT</a>                       <font face="Georgia" size="3">sigma4 in terms of SA &amp; CT with reference pressure of 4000 dbar</font>
+ <a href="gsw_enthalpy_CT.html">gsw_enthalpy_CT</a>                     <font face="Georgia" size="3">enthalpy from CT</font>
+ <a href="gsw_enthalpy_diff_CT.html">gsw_enthalpy_diff_CT</a>                <font face="Georgia" size="3">difference of enthalpy from CT between two pressures</font>
+ <a href="gsw_entropy_from_pt.html">gsw_entropy_from_pt</a>                 <font face="Georgia" size="3">entropy from potential temperature</font>
+ <a href="gsw_entropy_from_CT.html">gsw_entropy_from_CT</a>                 <font face="Georgia" size="3">entropy from Conservative Temperature</font>
+ <a href="gsw_pt_from_entropy.html">gsw_pt_from_entropy</a>                 <font face="Georgia" size="3">potential temperature from entropy</font>
+ <a href="gsw_CT_from_entropy.html">gsw_CT_from_entropy</a>                 <font face="Georgia" size="3">Conservative Temperature from entropy</font></font> 
+</pre>
+<a name="10"></a>
+<h3><font size="5" color="#000099"><b>derivatives of enthalpy, entropy, CT and pt</b></font></h3>
+<pre><font size="3"> <a href="gsw_CT_first_derivatives.html">gsw_CT_first_derivatives</a>            <font face="Georgia" size="3">first derivatives of Conservative Temperature</font>
+ <a href="gsw_CT_second_derivatives.html">gsw_CT_second_derivatives</a>           <font face="Georgia" size="3">second derivatives of Conservative Temperature</font>
+ <a href="gsw_enthalpy_first_derivatives.html">gsw_enthalpy_first_derivatives</a>      <font face="Georgia" size="3">first derivatives of enthalpy</font>
+ <a href="gsw_enthalpy_second_derivatives.html">gsw_enthalpy_second_derivatives</a>     <font face="Georgia" size="3">second derivatives of enthalpy</font>
+ <a href="gsw_entropy_first_derivatives.html">gsw_entropy_first_derivatives</a>       <font face="Georgia" size="3">first derivatives of entropy</font>
+ <a href="gsw_entropy_second_derivatives.html">gsw_entropy_second_derivatives</a>      <font face="Georgia" size="3">second derivatives of entropy</font>
+ <a href="gsw_pt_first_derivatives.html">gsw_pt_first_derivatives</a>            <font face="Georgia" size="3">first derivatives of potential temperature</font>
+ <a href="gsw_pt_second_derivatives.html">gsw_pt_second_derivatives</a>           <font face="Georgia" size="3">second derivatives of potential temperature</font></font>
+</pre>
+<a name="11"></a>
+<h3><font size="5" color="#000099"><b>Planet Earth properties</b></font></h3>
+<pre><font size="3"> <a href="gsw_f.html">gsw_f</a>                               <font face="Georgia" size="3">Coriolis parameter (f)</font>
+ <a href="gsw_grav.html">gsw_grav</a>                            <font face="Georgia" size="3">Gravitational acceleration</font>
+ <a href="gsw_distance.html">gsw_distance</a>                        <font face="Georgia" size="3">spherical earth distance between points</font>
+                                      <font face="Georgia" size="3">in long, lat coordinates at a given pressure</font></font>
+</pre>
+<a name="12"></a>
+<h3><font size="5" color="#000099"><b>functions for laboratory use</b></font></h3>
+<pre><font size="3"> <a href="gsw_SA_from_rho.html">gsw_SA_from_rho</a>                     <font face="Georgia" size="3">Absolute Salinity from density measurements</font>
+ <a href="gsw_sigma0_pt.html">gsw_sigma0_pt</a>                       <font face="Georgia" size="3">sigma_0 expressed in terms of SA &amp; pt0 with reference pressure of 0 dbar</font></font>
+</pre>
+<a name="13"></a>
+<h3><font size="5" color="#000099"><b>Practical Salinity (SP), PSS-78</b></font></h3>
+<pre><font size="3"> <a href="gsw_SP_from_cndr.html">gsw_SP_from_cndr</a>                    <font face="Georgia" size="3">Practical Salinity from conductivity ratio</font>
+ <a href="gsw_cndr_from_SP.html">gsw_cndr_from_SP</a>                    <font face="Georgia" size="3">conductivity ratio from Practical Salinity</font></font>
+</pre>
+<a name="14"></a>
+<h3><font size="5" color="#000099"><b>Front page, contents and check values of the GSW Oceanographic Toolbox</b></font></h3>
+<pre><font size="3"> <a href="gsw_introduction.html">gsw_introduction</a>                    <font face="Georgia" size="3">front page to the GSW Oceanographic Toolbox</font>
+ gsw_check_functions                 <font face="Georgia" size="3">checks that all the GSW functions work correctly</font></font>
+</pre>
+<a name="15"></a>
+<h3><font size="5" color="#000099"><b>Library functions of the GSW toolbox (internal functions; not intended to be called by users)</b></font></h3>
+<pre><font face="Georgia" size="3"> The GSW functions above call the following library functions.</font>
+ <font size="3"><a href="gsw_gibbs.html">gsw_gibbs</a>                           <font face="Georgia" size="3">the TEOS-10 Gibbs function and its derivatives</font>
+ <a href="gsw_delta_SA.html">gsw_delta_SA</a>                        <font face="Georgia" size="3">Absolute Salinity Anomaly (excluding the Baltic Sea)</font>
+ <a href="gsw_SA_from_SP_Baltic.html">gsw_SA_from_SP_Baltic</a>               <font face="Georgia" size="3">Calculates Absolute Salinity in the Baltic Sea</font>
+ <a href="gsw_SP_from_SA_Baltic.html">gsw_SP_from_SA_Baltic</a>               <font face="Georgia" size="3">Calculates Practical Salinity in the Baltic Sea</font>
+ <a href="gsw_infunnel.html">gsw_infunnel</a>                        <font face="Georgia" size="3">"oceanographic funnel" check for the 25-term equation</font>
+ gsw_entropy_part                    <font face="Georgia" size="3">entropy minus the terms that are a function of only SA</font>
+ gsw_entropy_part_zerop              <font face="Georgia" size="3">entropy_part evaluated at 0 dbar</font>
+ gsw_interp_McD_Klocker              <font face="Georgia" size="3">linearly interpolates the reference cast</font>
+ gsw_interp_SA_CT                    <font face="Georgia" size="3">linearly interpolates (SA,CT,p) to the desired p</font>
+ gsw_gibbs_pt0_pt0                   <font face="Georgia" size="3">gibbs(0,2,0,SA,t,0)</font>
+ gsw_specvol_SSO_0_CT25              <font face="Georgia" size="3">spec_vol_CT25(35.16504,0,p)</font>
+ gsw_enthalpy_SSO_0_CT25             <font face="Georgia" size="3">enthalpy_CT25(35.16504,0,p)</font></font>
+</pre>
+
+<pre><font face="Georgia" size="3"> The GSW data set.</font>
+ <font size="3">gsw_data_v2_0                       <font face="Georgia" size="3">contains (1) the global data set of Absolute Salinity Anomaly,</font>
+                                     <font face="Georgia" size="3">(2) a reference cast (for the McD_Klocker streamfunction), and</font>
+                                     <font face="Georgia" size="3">(3) three vertical profiles of (SP, t, p) at known long & lat, plus</font>
+                                     <font face="Georgia" size="3">the outputs of all the GSW functions for these 3 profiles, and</font>
+                                     <font face="Georgia" size="3">the required accuracy of all these outputs.</font></font>
+</pre>
+<a name="16"></a>
+<h3><font size="5" color="#000099"><b>Licences and 3<sup>rd</sup> party software</b></font></h3>
+<pre><font size="3"> <a href="gsw_licence.html">gsw_licence</a>                         <font face="Georgia" size="3">creative commons licence for the GSW Oceanographic Toolbox</font>
+ cprintf                             <font face="Georgia" size="3">prints colour text to the screen (third part software)</font>
+ cprintf_licence                     <font face="Georgia" size="3">licence for cprintf software</font></font>
+</pre>
+</div></body></html>
+      
