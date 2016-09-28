@@ -1,9 +1,12 @@
 # Standard-Mixing-Routines
 Repository for standard software used by oceanographic mixing community.
 
-This repository is inteded to be a repo for "best-practices" software used to perform standard calculations in the Oceanographic mixing community (such as Thorpe scales, finescale parameterizations etc). It will also allow:
-* comparison of methods
-* easy citation for publications.
+This repository is inteded to be a repo for "best-practices" software used to perform standard calculations in the Oceanographic mixing community (such as Thorpe scales, finescale parameterizations etc). Benefits include:
+* Enable reproducibility of analyses.
+* Enable comparison of different datasets using same code.
+* Allow easy re-calculations if bug is found later in code, or “best-practices” change.
+* Allow testing of one’s own code against other versions.
+* Easy, well-documented citations of techniques for publication
 
 We are just starting this repo and getting input from the community about how it should be set up. If you have any suggestions, we would love to hear them. Email andypicke (at) gmail (dot) com . Thanks!
 
