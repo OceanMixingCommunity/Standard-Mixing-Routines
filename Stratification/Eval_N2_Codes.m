@@ -25,17 +25,57 @@ load(fullfile(path_to_repo,'Data','CTD_N2a.mat'))
 icast=5
 
 % Method (1) use sw_bfreq from sw ver3.2 library
-[n2,q,p_ave]=sw_bfrq(ctd.s(:,icast), ctd.t(:,icast), ctd.p(:), ctd.lat(icast));
+[n2_sw,q,p_sw]=sw_bfrq(ctd.s(:,icast), ctd.t(:,icast), ctd.p(:), ctd.lat(icast));
 
 figure(1);clf
-plot(n2,p_ave)
+h1=plot(n2_sw,p_sw)
 axis ij
 grid on
 ylabel('p [db]','fontsize',15)
 xlabel('N^2 [rad^{-1}','fontsize',15)
 
-% Method (2) the GSW (TEOS-10) codes
-
-
+%% Method (2) the GSW (TEOS-10) codes (not sure if i'm doing this
+% correctly..)
+addpath(fullfile(path_to_repo,'gsw_matlab_v2_0'))
+addpath(fullfile(path_to_repo,'gsw_matlab_v2_0','library'))
+s=ctd.s(:,icast);
+t=ctd.t(:,icast);
+p=ctd.p;
+lat=ctd.lat(icast);
+lon=ctd.lon(icast);
+% 1st need Absolute Salinity
+%[SA, in_ocean] = gsw_SA_from_SP(SP,p,long,lat);
+[SA, in_ocean] = gsw_SA_from_SP(s,p,lon,lat);
+% then need CT
+CT = gsw_CT_from_t(SA,t,p);
+% then we can calculuate N2
+[n2_gsw, p_gsw, in_funnel] = gsw_Nsquared_CT25(SA,CT,p,lat);
 
 %%
+
+figure(1);%clf
+hold on
+h2=plot(n2_gsw,p_gsw)
+axis ij
+grid on
+ylabel('p [db]','fontsize',15)
+xlabel('N^2 [rad^{-1}','fontsize',15)
+
+%% Method (3) - adiabatic leveling from Amy W.
+
+
+[n2_adlev] = adiabatic_N2(p,t,s,lat);
+
+figure(1);%clf
+hold on
+h3=plot(n2_adlev,p,'b')
+axis ij
+grid on
+ylabel('p [db]','fontsize',15)
+xlabel('N^2 [rad^{-1}','fontsize',15)
+
+legend([h1 h2 h3],'sw32','gsw','adlev')
+
+%% save figure
+
+print('N2_comparisons','-dpng')

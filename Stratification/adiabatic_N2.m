@@ -38,5 +38,5 @@ for ii=1:size(press,2)
 end
 
 N2 = n2_bray;
-N2(hrp.N2<0)=NaN;
+%N2(hrp.N2<0)=NaN;
 
