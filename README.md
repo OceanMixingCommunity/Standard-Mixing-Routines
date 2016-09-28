@@ -7,7 +7,7 @@ This repository is inteded to be a repo for "best-practices" software used to pe
 
 We are just starting this repo and getting input from the community about how it should be set up. If you have any suggestions, we would love to hear them. Email andypicke (at) gmail (dot) com . Thanks!
 
-![alt text]/(https://github.com/OceanMixingCommunity/Standard-Mixing-Routines/blob/master/ifildpkheoobnopb.png)
+![]/(ifildpkheoobnopb.jpg)
 
 
 ## How to Contribute
