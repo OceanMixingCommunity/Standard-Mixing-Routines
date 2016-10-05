@@ -24,6 +24,10 @@ load(fullfile(path_to_repo,'Data','CTD_N2a.mat'))
 % choose cast to use
 icast=5
 
+s=ctd.s(:,icast);
+t=ctd.t(:,icast);
+p=ctd.p;
+
 % Method (1) use sw_bfreq from sw ver3.2 library
 [n2_sw,q,p_sw]=sw_bfrq(ctd.s(:,icast), ctd.t(:,icast), ctd.p(:), ctd.lat(icast));
 
@@ -38,9 +42,6 @@ xlabel('N^2 [rad^{-1}','fontsize',15)
 % correctly..)
 addpath(fullfile(path_to_repo,'gsw_matlab_v2_0'))
 addpath(fullfile(path_to_repo,'gsw_matlab_v2_0','library'))
-s=ctd.s(:,icast);
-t=ctd.t(:,icast);
-p=ctd.p;
 lat=ctd.lat(icast);
 lon=ctd.lon(icast);
 % 1st need Absolute Salinity
@@ -75,6 +76,23 @@ ylabel('p [db]','fontsize',15)
 xlabel('N^2 [rad^{-1}','fontsize',15)
 
 legend([h1 h2 h3],'sw32','gsw','adlev')
+
+%% Method (4) - N^2 code from Gunnar Voet
+
+p0=0;
+dp=nanmean(diff(p))
+[n2_gv,p_gv,dthetadz,dsdz] = g_nsqfcn(s,t,p,p0,dp);
+
+figure(1);%clf
+hold on
+h4=plot(n2_gv,p_gv)
+axis ij
+grid on
+ylabel('p [db]','fontsize',15)
+xlabel('N^2 [rad^{-1}','fontsize',15)
+
+legend([h1 h2 h3 h4],'sw32','gsw','adlev','gv')
+
 
 %% save figure
 
