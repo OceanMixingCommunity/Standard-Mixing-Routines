@@ -89,7 +89,7 @@ h4=plot(n2_gv,p_gv)
 axis ij
 grid on
 ylabel('p [db]','fontsize',15)
-xlabel('N^2 [rad^{-1}','fontsize',15)
+xlabel('N^2 [rad^2s^{-s}]','fontsize',15)
 
 legend([h1 h2 h3 h4],'sw32','gsw','adlev','gv')
 
