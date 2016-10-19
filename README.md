@@ -34,3 +34,4 @@ We are just starting this repo and getting input from the community about how it
 * Guide to GitHub workflow: <https://guides.github.com/introduction/flow/>
 * CVmix: <http://cvmix.github.io/>
 * Amy's Microstructure Database : <http://microstructure.ucsd.edu>
+* pycurrents (python utils for oceanographic data analysis) <http://currents.soest.hawaii.edu/hgstage/pycurrents/file/9f335da750d2>
