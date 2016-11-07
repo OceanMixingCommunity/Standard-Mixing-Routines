@@ -200,7 +200,8 @@ for iref=1:length(refd)
             subplot(141)
             plot(n2,p_ave)
             xlim([0 nanmax(n2)])
-            xlabel('N^2')
+            xlabel('N^2','fontsize',16)
+            ylabel('P [db]','fontsize',16)
             axis ij
             grid on
             
@@ -214,8 +215,8 @@ for iref=1:length(refd)
             ytloff
             
             subplot(143)
-            plot(dz,pg,'o-')
-            xlabel('dz')
+            plot(dz,pg,'-')
+            xlabel('dz','fontsize',16)
             axis ij
             grid on
             ytloff
@@ -346,7 +347,7 @@ n2out=interp1(p_ave,n2,p0); % NOTE this maybe not n2 used to compute epsilon in 
 if Params.plotit==1
     subplot(144)
     plot(Lot,p0,'o-')
-    xlabel('Lot')
+    xlabel('Lot','fontsize',16)
     hold on
     plot(Lmin,p0)
     axis ij
