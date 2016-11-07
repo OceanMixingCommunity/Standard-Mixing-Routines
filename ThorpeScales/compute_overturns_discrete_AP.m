@@ -160,9 +160,11 @@ for iref=1:length(refd)
         pg=pg(:);
         
         % distinguish between up/down casts?
-        sig = sign(nanmedian(diff(V)));
-        
-        % sort profile
+        % temp decreases with depth, we want to sort but put in descending
+        % order vs ascending for sgth
+        sig = sign(nanmedian(diff(V))); 
+                
+        % sort profile            
         [Vsort,ind]=sort(sig*V);
         % tsort=sig*V; % AP 13 Feb
         psort = pg(ind);
@@ -189,6 +191,8 @@ for iref=1:length(refd)
         Lt_each    = [] ;
         Otnsq_each = [] ;
         eps_each   = [] ;
+        pstarts_each=[] ;
+        pstops_each =[] ;
         
         clear start_pass stops_pass
         start_pass=[];
@@ -206,13 +210,18 @@ for iref=1:length(refd)
             grid on
             
             subplot(142)
-            plot(sig*V,pg,Vsort,pg)
+            plot(V,pg,sig*Vsort,pg)
             hold on
             plot(V(start),pg(start),'bo')
             plot(V(stops),pg(stops),'rd')
             axis ij
             grid on
             ytloff
+            if Params.usetemp==1
+                xlabel('T','fontsize',16)
+            else
+                xlabel('sgth','fontsize',16)
+            end
             
             subplot(143)
             plot(dz,pg,'-')
@@ -290,6 +299,9 @@ for iref=1:length(refd)
                 eps_each   = [eps_each 0.64*Lt_each(end).^2.*sqrt(Otnsq_each(end)).^3];
                 
                 start_pass=[start_pass start(j)];
+                
+                pstarts_each=[pstarts_each pg(start(j))];
+                pstops_each = [pstops_each pg(stops(j))];
                 
             else % overturn did not pass test
                 Otnsq(ind) = NaN;
@@ -379,6 +391,10 @@ OT.Lot_each=Lot_each;
 OT.Lt_each=Lt_each;
 OT.Otnsq_each=Otnsq_each;
 OT.eps_each=eps_each;
+
+OT.pstarts_each=pstarts_each;
+OT.pstops_each=pstops_each;
+
 %
 return
 
