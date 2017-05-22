@@ -33,5 +33,5 @@ We are just starting this repo and getting input from the community about how it
 * OSU Ocean Mixing Group: <http://mixing.coas.oregonstate.edu/>
 * Guide to GitHub workflow: <https://guides.github.com/introduction/flow/>
 * CVmix: <http://cvmix.github.io/>
-* Amy's Microstructure Database : <http://microstructure.ucsd.edu>
+* Amy's Microstructure Database : <http://microstructure.ucsd.edu> ( see <https://github.com/OceanMixingCommunity/Standard-Mixing-Routines/blob/master/Examine_mixing_data.ipynb> for example of working w/ data in python)
 * pycurrents (python utils for oceanographic data analysis) <http://currents.soest.hawaii.edu/hgstage/pycurrents/file/9f335da750d2>
